@@ -1,0 +1,22 @@
+<div class="row">
+<div class="span4 offset4 well">
+
+<%= image_tag("/images/logo_dimension.jpg")%>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <br />
+  <div><%= f.label :email, "Usuario", :class => "control-label" %>
+  <%= f.email_field :email,  :class => "span4", :autofocus => true %></div>
+
+  <div><%= f.label :password, "Contrasena" %>
+  <%= f.password_field :password, :class => "span4"  %></div>
+
+  <div><% if devise_mapping.rememberable? -%>
+    <%= f.check_box :remember_me %> <%= f.label :remember_me, "Recuerdame" %></div>
+  <% end -%>
+
+  <div><%= f.submit "Identificate", :class => "btn btn-primary pull-right" %></div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+</div>
+</div>
