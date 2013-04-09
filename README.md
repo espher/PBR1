@@ -1,1 +1,1 @@
-PBR Diagrams BY Roberto Santelices
+PBR Diagrams BY Roberto Santelices y Guillermo Villaverde
