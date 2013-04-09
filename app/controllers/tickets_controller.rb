@@ -1,19 +1,28 @@
 class TicketsController < ApplicationController
+
+	def index
+		@ticket = Ticket.all
+
+	end
 	def new
 		@ticket = Ticket.new
-
 	end
 
 	def create
 		@ticket = Ticket.new(params[:ticket])
-	if @ticket.save
+		@ticket.save
 		flash[:notice] = "Ticket creado."
 		redirect_to [@ticket]
-	else
-		flash[:alert] = "Ticket no creado."
-		render :action => "new"
-end
-end
+	end
 	def show
-		end
+		@ticket = Ticket.find(params[:id])
+	end
+	
+	def destroy
+		@ticket = Ticket.find(params[:id])
+		@ticket.destroy
+		flash[:notice] = "Ticket borrado correctamente."
+		redirect_to tickets_path
+	end
+
 end

@@ -1,0 +1,7 @@
+<%= render "layouts/authenticated" %>
+
+<ul>
+<% @ticket.each do |ticket| %>
+<li><%= link_to ticket.title, ticket %></li>
+<% end %>
+</ul>

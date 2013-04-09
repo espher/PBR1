@@ -1,5 +1,6 @@
+<%= render "layouts/authenticated" %>
 <%= form_for @ticket do |f| %>
-<%= f.error_messages %>
+
 <p>
 <%= f.label :title %><br>
 <%= f.text_field :title %>
