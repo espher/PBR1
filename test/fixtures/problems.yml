@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  department: MyString
+  responsable_unit: MyString
+  email: MyString
+  budget_program: MyString
+  city: MyString
+
+two:
+  name: MyString
+  department: MyString
+  responsable_unit: MyString
+  email: MyString
+  budget_program: MyString
+  city: MyString
