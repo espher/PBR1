@@ -1,2 +1,5 @@
 <%= render "layouts/authenticated" %>
 <%= @problem.name %>
+<%= link_to "Editar", edit_problem_path(@problem) %>
+<%= link_to "Delete Project", @project, :method => :delete, :class => 'action',
+:confirm => "Are you sure you want to delete this project?" %>

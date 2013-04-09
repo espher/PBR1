@@ -1,1 +1,7 @@
 <%= render "layouts/authenticated" %>
+
+<ul>
+<% @problem.each do |problem| %>
+<li><%= link_to problem.name, problem %></li>
+<% end %>
+</ul>

@@ -62,6 +62,7 @@ scope "/admin" do
   resources :users
 end
 resources :problems, :path => 'Programas'
+resources :tickets, :path => 'Tickets'
 
 
 
