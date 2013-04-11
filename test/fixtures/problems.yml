@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  department: MyString
-  responsable_unit: MyString
-  email: MyString
-  budget_program: MyString
+  budget_program: 1
   city: MyString
+  department: MyString
+  email: MyString
+  name: MyString
+  responsable_unit: MyString
 
 two:
-  name: MyString
-  department: MyString
-  responsable_unit: MyString
-  email: MyString
-  budget_program: MyString
+  budget_program: 1
   city: MyString
+  department: MyString
+  email: MyString
+  name: MyString
+  responsable_unit: MyString

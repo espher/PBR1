@@ -1,4 +1,6 @@
 class Levelfivecause < ActiveRecord::Base
-  belongs_to :problem
+ 
+   belongs_to :levelfourcause
   attr_accessible :content
+  has_many :levelsixcause
 end

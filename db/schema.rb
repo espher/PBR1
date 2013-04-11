@@ -11,193 +11,266 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130409174620) do
+ActiveRecord::Schema.define(:version => 20130411200326) do
 
   create_table "ideas", :force => true do |t|
-    t.string   "content"
-    t.integer  "problem_id"
+    t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "ideas", ["problem_id"], :name => "index_ideas_on_problem_id"
 
   create_table "leveleightcauses", :force => true do |t|
     t.string   "content"
-    t.integer  "problem_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "levelsevencause_id"
   end
-
-  add_index "leveleightcauses", ["problem_id"], :name => "index_leveleightcauses_on_problem_id"
 
   create_table "leveleighteffects", :force => true do |t|
     t.string   "content"
-    t.integer  "problem_id"
-    t.integer  "levelseveneffect_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.integer  "levelseveneffect_id"
   end
 
-  add_index "leveleighteffects", ["levelseveneffect_id"], :name => "index_leveleighteffects_on_levelseveneffect_id"
-  add_index "leveleighteffects", ["problem_id"], :name => "index_leveleighteffects_on_problem_id"
+  create_table "leveleightends", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "levelsevenend_id"
+  end
+
+  create_table "leveleightways", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "levelsevenway_id"
+  end
 
   create_table "levelfivecauses", :force => true do |t|
     t.string   "content"
-    t.integer  "problem_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "levelfourcause_id"
   end
-
-  add_index "levelfivecauses", ["problem_id"], :name => "index_levelfivecauses_on_problem_id"
 
   create_table "levelfiveeffects", :force => true do |t|
     t.string   "content"
-    t.integer  "problem_id"
-    t.integer  "levelfoureffect_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.integer  "levelfoureffect_id"
   end
 
-  add_index "levelfiveeffects", ["levelfoureffect_id"], :name => "index_levelfiveeffects_on_levelfoureffect_id"
-  add_index "levelfiveeffects", ["problem_id"], :name => "index_levelfiveeffects_on_problem_id"
+  create_table "levelfiveends", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "levelfourend_id"
+  end
+
+  create_table "levelfiveways", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "levelfourway_id"
+  end
 
   create_table "levelfourcauses", :force => true do |t|
     t.string   "content"
-    t.integer  "problem_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "levelthreecause_id"
   end
-
-  add_index "levelfourcauses", ["problem_id"], :name => "index_levelfourcauses_on_problem_id"
 
   create_table "levelfoureffects", :force => true do |t|
     t.string   "content"
-    t.integer  "problem_id"
-    t.integer  "levelthreeeffect_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.integer  "levelthreeeffect_id"
   end
 
-  add_index "levelfoureffects", ["levelthreeeffect_id"], :name => "index_levelfoureffects_on_levelthreeeffect_id"
-  add_index "levelfoureffects", ["problem_id"], :name => "index_levelfoureffects_on_problem_id"
+  create_table "levelfourends", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "levelthreeend_id"
+  end
+
+  create_table "levelfourways", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "levelthreeway_id"
+  end
 
   create_table "levelonecauses", :force => true do |t|
     t.string   "content"
-    t.integer  "problem_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "problem_id"
   end
-
-  add_index "levelonecauses", ["problem_id"], :name => "index_levelonecauses_on_problem_id"
 
   create_table "leveloneeffects", :force => true do |t|
     t.string   "content"
-    t.integer  "problem_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "problem_id"
   end
 
-  add_index "leveloneeffects", ["problem_id"], :name => "index_leveloneeffects_on_problem_id"
+  create_table "leveloneends", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "problem_id"
+  end
+
+  create_table "leveloneways", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "problem_id"
+  end
 
   create_table "levelsevencauses", :force => true do |t|
     t.string   "content"
-    t.integer  "problem_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "levelsixcause_id"
   end
-
-  add_index "levelsevencauses", ["problem_id"], :name => "index_levelsevencauses_on_problem_id"
 
   create_table "levelseveneffects", :force => true do |t|
     t.string   "content"
-    t.integer  "problem_id"
-    t.integer  "levelsixeffect_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.integer  "levelsixeffect_id"
   end
 
-  add_index "levelseveneffects", ["levelsixeffect_id"], :name => "index_levelseveneffects_on_levelsixeffect_id"
-  add_index "levelseveneffects", ["problem_id"], :name => "index_levelseveneffects_on_problem_id"
+  create_table "levelsevenends", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "levelsixend_id"
+  end
+
+  create_table "levelsevenways", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "levelsixway_id"
+  end
 
   create_table "levelsixcauses", :force => true do |t|
     t.string   "content"
-    t.integer  "problem_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "levelfivecause_id"
   end
-
-  add_index "levelsixcauses", ["problem_id"], :name => "index_levelsixcauses_on_problem_id"
 
   create_table "levelsixeffects", :force => true do |t|
     t.string   "content"
-    t.integer  "problem_id"
-    t.integer  "levelfiveeffect_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.integer  "levelfiveeffect_id"
   end
 
-  add_index "levelsixeffects", ["levelfiveeffect_id"], :name => "index_levelsixeffects_on_levelfiveeffect_id"
-  add_index "levelsixeffects", ["problem_id"], :name => "index_levelsixeffects_on_problem_id"
+  create_table "levelsixends", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "levelfiveend_id"
+  end
+
+  create_table "levelsixways", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "levelfiveway_id"
+  end
 
   create_table "levelthreecauses", :force => true do |t|
     t.string   "content"
-    t.integer  "problem_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "leveltwocause_id"
   end
-
-  add_index "levelthreecauses", ["problem_id"], :name => "index_levelthreecauses_on_problem_id"
 
   create_table "levelthreeeffects", :force => true do |t|
     t.string   "content"
-    t.integer  "problem_id"
-    t.integer  "leveltwoeffect_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.integer  "leveltwoeffect_id"
   end
 
-  add_index "levelthreeeffects", ["leveltwoeffect_id"], :name => "index_levelthreeeffects_on_leveltwoeffect_id"
-  add_index "levelthreeeffects", ["problem_id"], :name => "index_levelthreeeffects_on_problem_id"
+  create_table "levelthreeends", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "leveltwoend_id"
+  end
+
+  create_table "levelthreeways", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "leveltwoway_id"
+  end
 
   create_table "leveltwocauses", :force => true do |t|
     t.string   "content"
-    t.integer  "problem_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "levelonecause_id"
   end
-
-  add_index "leveltwocauses", ["problem_id"], :name => "index_leveltwocauses_on_problem_id"
 
   create_table "leveltwoeffects", :force => true do |t|
     t.string   "content"
-    t.integer  "problem_id"
-    t.integer  "leveloneeffect_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.integer  "leveloneeffect_id"
   end
 
-  add_index "leveltwoeffects", ["leveloneeffect_id"], :name => "index_leveltwoeffects_on_leveloneeffect_id"
-  add_index "leveltwoeffects", ["problem_id"], :name => "index_leveltwoeffects_on_problem_id"
+  create_table "leveltwoends", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "leveloneend_id"
+  end
+
+  create_table "leveltwoways", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "leveloneway_id"
+  end
 
   create_table "problems", :force => true do |t|
-    t.string   "name"
-    t.string   "department"
-    t.string   "responsable_unit"
-    t.string   "email"
-    t.string   "budget_program"
+    t.integer  "budget_program"
     t.string   "city"
+    t.string   "department"
+    t.string   "email"
+    t.string   "name"
+    t.string   "responsable_unit"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
 
-  create_table "tickets", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "email"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+  create_table "prueba2s", :force => true do |t|
+    t.string   "content"
+    t.integer  "levelfourend_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
+
+  add_index "prueba2s", ["levelfourend_id"], :name => "index_prueba2s_on_levelfourend_id"
+
+  create_table "pruebas", :force => true do |t|
+    t.string   "content"
+    t.integer  "problem_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "pruebas", ["problem_id"], :name => "index_pruebas_on_problem_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
