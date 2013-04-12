@@ -25,18 +25,18 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: pbtrecil_pbr
+  database: pbr_development
   pool: 5
-  username: pbtrecil_root
-  password: solares
+  username: root
+  password: 
   socket: /var/run/mysqld/mysqld.sock
 
 production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: pbtrecil_pbr
+  database: pbr_development
   pool: 5
-  username: pbtrecil_root
-  password: solares
+  username: root
+  password: 
   socket: /var/run/mysqld/mysqld.sock

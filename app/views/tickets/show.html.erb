@@ -1,3 +1,6 @@
 <%= render "layouts/authenticated" %>
-<h2><%= @ticket.title %></h2>
-<%= link_to "Estado", edit_ticket_path(@ticket) %>
+<%= @ticket.title %>
+
+<%= link_to "Editar", edit_ticket_path(@ticket) %>
+<%= link_to "Delete Project", @ticket, :method => :delete, :class => 'action',
+:confirm => "Are you sure you want to delete this project?" %>

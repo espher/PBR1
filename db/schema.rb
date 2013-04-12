@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130412175924) do
+ActiveRecord::Schema.define(:version => 20130412191631) do
 
   create_table "dependencies", :force => true do |t|
     t.string   "department"
@@ -277,6 +277,13 @@ ActiveRecord::Schema.define(:version => 20130412175924) do
   end
 
   add_index "pruebas", ["problem_id"], :name => "index_pruebas_on_problem_id"
+
+  create_table "tickets", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
