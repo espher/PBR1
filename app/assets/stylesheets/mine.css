@@ -1,0 +1,37 @@
+label.error {
+    color: #FB3A3A;
+    display: inline-block;
+    margin: 4px 0 5px 125px;
+    padding: 0;
+    text-align: left;
+    width: 220px;
+}
+
+#sed1 label.error {
+	margin-left: 10px;
+	width: auto;
+	display: inline;
+}
+
+.window { 
+	border:0.1em dotted #195a96; 
+	opacity:0.8; 
+	filter:alpha(opacity=80); 
+	width:14em; height:4em; 
+	z-index:20; 
+	position:absolute; 
+	color:black;
+	font-family:helvetica, sans;
+	padding-top:0.9em; 
+	font-size:0.9em;
+	text-align:center;
+	background-color:white;
+}
+#window1 { left:20em;}
+#window2 { left:10em;top:12em;}
+#window3 { left:40em;top:12em;}
+#window4 { left:4em;top:24em;}
+#window5 { left:22em;top:24em;}
+#window6 { left:47em;top:24em;}
+#window7 { top:18em;left:40em;}
+#window8 { left:63em;top:32em;}

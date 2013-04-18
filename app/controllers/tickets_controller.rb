@@ -19,13 +19,10 @@ class TicketsController < ApplicationController
 		@ticket = Ticket.find(params[:id])
 	end
 	def update
-		if @ticket.update_attributes(params[:ticket])
-			flash[:notice] = "Ticket Modificado."
-			redirect_to [@ticket]
-		else
-			flash[:alert] = "Ticket No Modificado."
-			render :action => "edit"
-		end
+		@ticket = Ticket.find(params[:id])
+		@ticket.update_attributes(params[:ticket])
+		flash[:notice] = "Ticket editado correctamente."
+		redirect_to @ticket
 	end
 	def destroy
 		@ticket = Ticket.find(params[:id])

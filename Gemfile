@@ -17,6 +17,12 @@ gem 'bootstrap-sass', '~> 2.3.1.0'
 
 gem 'wicked'
 
+gem 'jquery-rails', '2.1.4'
+gem 'jquery-migrate-rails', '1.0.0'
+
+
+gem "haml", "~> 4.0.2"
+
 
 gem "nested_form"
 # Gems used only for assets and not required
@@ -30,7 +36,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
