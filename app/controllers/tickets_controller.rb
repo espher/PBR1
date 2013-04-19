@@ -1,3 +1,4 @@
+# coding: utf-8
 class TicketsController < ApplicationController
 before_filter :authenticate_user!, :except => [:index, :show]
 
@@ -9,9 +10,14 @@ before_filter :authenticate_user!, :except => [:index, :show]
 	end
 	def create
 		@ticket = Ticket.new(params[:ticket])
-	    @ticket.save
-		flash[:notice] = "Ticket reado correctamente."
-		redirect_to @ticket
+		@ticket.user_id = current_user.id
+	    if @ticket.save
+		flash[:notice] = "Ticket creado correctamente."
+		redirect_to tickets_path
+		else
+		flash[:alert] = "Su ticket no se a creado, por favor intentelo de nuevo."
+		render :action => "new"
+	end
 	end
 	def show
 		@ticket = Ticket.find(params[:id])
@@ -29,6 +35,6 @@ before_filter :authenticate_user!, :except => [:index, :show]
 		@ticket = Ticket.find(params[:id])
 		@ticket.destroy
 		flash[:notice] = "Programa borrado correctamente."
-		redirect_to ticketss_path
+		redirect_to tickets_path
 	end
 end

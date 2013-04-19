@@ -3,5 +3,4 @@
 <%= @ticket.description %>
 
 <%= link_to "Editar", edit_ticket_path(@ticket), :class=> "pull-right" %>
-<%= link_to "Borrar", @ticket, :method => :delete, :class => 'action pull-right',
-:confirm => "Are you sure you want to delete this project?" %>
+<%= link_to "Borrar", @ticket, :method => :delete, :class => 'action pull-right' %>
