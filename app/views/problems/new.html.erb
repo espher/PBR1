@@ -1,88 +1,22 @@
 <%= render "layouts/authenticated" %>
+ <legend> Creacion de Programas Presupuestarios</legend>
+<div class="span4 offset1">
+
+<%= simple_form_for @problem, :html => { :class => "form-horizontal" }  do |f| %>
+<fieldset>
+ 
+	<%= f.input :name, label: 'Nombre del Programa' %>
+	<%= f.input :organism, label: 'Dependencia', collection: ["Dependencia 1", "Dependencia 2", "Dependencia 3"] %>
+	<%= f.input :responsable_unit, label: 'Nombre del Responsable del Programa' %>
+	<%= f.input :city, label: 'Ciudad', collection: [ "Chihuahua", "DF", "Toluca", "Juarez"] %>
+	<%= f.input :department, label: 'Departamento', :collection => [ "Direccion Tecnica", "Proyectos Especiales", "Sub Direccion de Estudios"] %>
 
 
-<ul id="myTab" class="nav nav-tabs">
-      <li class="active"><a href="#sed1" data-toggle="tab">General</a></li>
-      <li><a href="#sed2" data-toggle="tab">Causas</a></li>
-      <li><a href="#sed3" data-toggle="tab">Efectos</a></li>
-      <li><a href="#sed4" data-toggle="tab">Generar Arbol</a></li>
-    </ul>
-    <div id="contenido" class="tab-content">
-      <div class="tab-pane fade in active" id="sed1">
-      	<form id="sed1_form">
-		    <legend>Datos Generales</legend>
-		    <label>Dependencia u Organizacion Desentralizado</label>
-		    <input class="input-xxlarge" type="text" id="dependencia" name="dependencia">
-		    <label>Nombre del programa presupuestario</label>
-		    <input class="input-xxlarge" type="text" name="programa" id="programa">
-		    <label>Direccion / Subdireccion / Departamento</label>
-		    <input class="input-xxlarge" type="text" name="direccion" id="direccion">
-		    <label>Nombre del Responsable del Programa</label>
-		    <input class="input-xxlarge" type="text" name="responsable" id="responsable">
-		    <label>Unidad Responsable</label>
-		    <input class="input-xxlarge" type="text" name="unidad" id="unidad">
-		    <label>Correo Electronico</label>
-		    <input class="input-xxlarge" type="text" name="email" id="email">
-		    <label>Fecha inicio</label>
-		    <input class="input-xxlarge" type="text" name="fechainicio" id="fechainicio">
-		    <label>Fecha fin</label>
-		    <input class="input-xxlarge" type="text" name="fechafin" id="fechafin">
-		    <label>Definicion del Problema</label>
-		    <input class="input-xxlarge" type="text" name="definicion" id="definicion">
-		    <span id="addsNiveles"></span>
-		    <div class="form-actions">
-			  <button type="submit" class="btn btn-primary">Guardar Datos</button>
-			  <button type="button" class="btn">Cancelar</button>
-			</div>
-		</form>
-      </div>
-
-	    <div class="tab-pane fade" id="sed2">
-	      	<form id="sed2_form">
-	      		<label>Numero de niveles a crear</label>
-	      		<input type="text" name="nonivel" id="nonivel">
-	      		<input type="button" id="aceptarNivel" value="Aceptar" class="btn btn-info">
-	      		<input type="button" id="nuevoNivel" value="Nuevo" class="btn btn-info">
-	      		<div id="causas_nivel">
-	      			<legend>Causas por Nivel</legend>
-	      			<ul id="causa_nivel_tab" class="nav nav-tabs"></ul>
-	      			 <div id="causa_nivel_tab_container" class="tab-content"></div>
-	      		</div>
-			    <div class="form-actions">
-				  <button type="button" class="btn btn-primary" id="guardar_sed2_form">Guardar Datos</button>
-				  <button type="button" class="btn">Cancelar</button>
-				</div>
-	      	</form>
-	    </div>
-
-	    <div class="tab-pane fade" id="sed3">
-	      	<form id="sed3_form">
-	      		<label>Numero de niveles a crear</label>
-	      		<input type="text" name="nonivelEfecto" id="nonivelEfecto">
-	      		<input type="button" id="aceptarNivelEfecto" value="Aceptar" class="btn btn-info">
-	      		<input type="button" id="nuevoNivelEfecto" value="Nuevo" class="btn btn-info">
-	      		<div id="causas_nivel">
-	      			<legend>Efectos por Nivel</legend>
-	      			<ul id="efecto_nivel_tab" class="nav nav-tabs"></ul>
-	      			 <div id="efecto_nivel_tab_container" class="tab-content"></div>
-	      		</div>
-			    <div class="form-actions">
-				  <button type="button" class="btn btn-primary" id="guardar_sed3_form">Guardar Datos</button>
-				  <button type="button" class="btn">Cancelar</button>
-				</div>
-	      	</form>
-	    </div>
-
-	    <div class="tab-pane fade" id="sed4">
-				<div class="window" id="window1">window one</div>
-				<div class="window" id="window2">window two</div>
-				<div class="window" id="window3">window three</div>
-				<div class="window" id="window4">window four</div>
-				<div class="window" id="window5">window five</div>
-				<div class="window" id="window6">window six</div>
-
-      	</div>
-
-    </div>
-  </div>
+	<%= f.input :email, label: 'Correo Electronico', placeholder: 'usuario@correo.com' %>
 </div>
+		<div class="span4 offset1">
+	<%= f.input :init_date, label: 'Fecha problable de Inicio'%>
+	<%= f.input :end_date, label: 'Fecha problable de Terminacion' %>
+</div>
+  <%= f.button :submit, 'Crear Programa', class: 'btn btn-primary pull-right' %>
+<% end %>

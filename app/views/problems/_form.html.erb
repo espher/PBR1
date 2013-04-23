@@ -1,6 +1,121 @@
+<%= simple_nested_form_for @problem, :html => { :class => "form-horizontal" }  do |f| %>
+
+ 
 
 
- <%= semantic_form_for @problem do |f| %>
-    <%= f.inputs %>
-    <%= f.actions %>
-  <% end %>
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-pills">
+    <li class="active"><a href="#definicion" data-toggle="tab">Definicion del Problema</a></li>
+    <li><a href="#arbolproblema" data-toggle="tab">Arbol del Problema</a></li>
+     <li><a href="#arbolproblema" data-toggle="tab">Arbol de Objetivos</a></li>
+     <li><a href="#arbolproblema" data-toggle="tab">Matriz Marco Logico</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane fade in active" id="definicion">
+      
+<ul class="nav nav-tabs">
+    <li><a href="#infbasica" data-toggle="tab">Informacion Basica</a></li>
+    <li><a href="#nombrar" data-toggle="tab">Definicion del Problema</a></li>
+    <li><a href="#lluvia" data-toggle="tab">Lluvia de Ideas</a></li>
+  </ul>
+
+
+<div class="tab-content">
+    <div class="tab-pane fade" id="infbasica">
+       <div class="span4 offset1"> 
+	<%= f.input :name, label: 'Nombre del Programa' %>
+	<%= f.input :organism, label: 'Dependencia', collection: ["Dependencia 1", "Dependencia 2", "Dependencia 3"] %>
+	<%= f.input :responsable_unit, label: 'Nombre del Responsable del Programa' %>
+	<%= f.input :city, label: 'Ciudad', collection: [ "Chihuahua", "DF", "Toluca", "Juarez"] %>
+	<%= f.input :department, label: 'Departamento', :collection => [ "Direccion Tecnica", "Proyectos Especiales", "Sub Direccion de Estudios"] %>
+	<%= f.input :email, label: 'Correo Electronico', placeholder: 'usuario@correo.com' %>
+</div>
+		<div class="span4 offset1">
+	<%= f.input :init_date, label: 'Fecha problable de Inicio'%>
+	<%= f.input :end_date, label: 'Fecha problable de Terminacion' %>
+</div>
+    </div>
+
+    <div class="tab-pane fade" id="nombrar">
+     <div class="span6 offset1">
+<%= f.input :definition, label: 'Definicion del Problema', as: :text %>
+</div>
+
+    </div>
+
+    <div class="tab-pane fade" id="lluvia">
+    
+
+
+ <div class="span6 offset1">
+
+<%= f.simple_fields_for :idea do  |i| %>
+    
+    <%= i.input :content,  label: 'Idea', as: :text, required: false %>
+    <%= i.link_to_remove "Quitar", :class => 'btn btn-danger' %>
+  
+   
+<% end %>
+
+ <%= f.link_to_add "Agregar Idea", :idea %>
+</div>
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+    </div>
+    <div class="tab-pane fade" id="arbolproblema">
+     
+
+
+
+<ul class="nav nav-tabs">
+    <li><a href="#causas" data-toggle="tab">Causas</a></li>
+    <li><a href="#efectos" data-toggle="tab">Efectos</a></li>
+    <li><a href="#diagcauef" data-toggle="tab">Generar Diagrama</a></li>
+  </ul>
+
+<div class="tab-content">
+    <div class="tab-pane" id="causas">
+
+<div class="span6 offset1">      
+<%= f.simple_fields_for :levelonecause do  |levelone| %>
+    
+    <%= levelone.input :content,  label: 'Causa', as: :text, required: false %>
+    <%= levelone.link_to_remove "Quitar", :class => 'btn btn-danger' %>
+  
+   
+<% end %>
+
+ <%= f.link_to_add "Agregar Causa del nivel 1", :levelonecause %>
+</div>
+ </div>
+
+    <div class="tab-pane" id="efectos">
+<div class="span6 offset1">      
+<%= f.simple_fields_for :leveloneeffect do  |levelonefx| %>
+    
+    <%= levelonefx.input :content,  label: 'Efect', as: :text, required: false %>
+    <%= levelonefx.link_to_remove "Quitar", :class => 'btn btn-danger' %>
+  
+   
+<% end %>
+
+ <%= f.link_to_add "Agregar Efecto del nivel 1", :leveloneeffect %>
+</div>
+
+    </div>
+
+    </div>
+  </div>
+</div>
+
+ <%= f.button :submit, 'Guardar Datos', class: 'btn btn-primary pull-right' %>
+<% end %>

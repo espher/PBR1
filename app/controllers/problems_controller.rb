@@ -1,3 +1,4 @@
+# coding: utf-8
 class ProblemsController < ApplicationController
 	
 	def index
@@ -24,7 +25,7 @@ class ProblemsController < ApplicationController
 		@problem = Problem.find(params[:id])
 		@problem.update_attributes(params[:problem])
 		flash[:notice] = "Programa editado correctamente."
-		redirect_to @problem
+		redirect_to edit_problem_path(@problem)
 		
 	
 	end

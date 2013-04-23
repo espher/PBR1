@@ -11,7 +11,8 @@ gem 'devise'
 gem "formtastic", "~> 2.2"
 gem "formtastic-plus-bootstrap"
 
-
+gem 'simple_form'
+gem 'country_select'
 gem 'sass-rails', '~> 3.2'
 gem 'bootstrap-sass', '~> 2.3.1.0'
 

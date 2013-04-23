@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130418233936) do
+ActiveRecord::Schema.define(:version => 20130422192014) do
 
   create_table "dependencies", :force => true do |t|
     t.string   "department"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20130418233936) do
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "problem_id"
   end
 
   create_table "leveleightcauses", :force => true do |t|
@@ -258,6 +259,10 @@ ActiveRecord::Schema.define(:version => 20130418233936) do
     t.string   "responsable_unit"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.date     "init_date"
+    t.date     "end_date"
+    t.string   "definition"
+    t.string   "organism"
   end
 
   create_table "prueba2s", :force => true do |t|
