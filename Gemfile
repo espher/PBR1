@@ -15,8 +15,9 @@ gem 'simple_form'
 gem 'country_select'
 gem 'sass-rails', '~> 3.2'
 gem 'bootstrap-sass', '~> 2.3.1.0'
-
+gem 'font-awesome-sass-rails'
 gem 'wicked'
+gem 'google-code-prettify-rails'
 
 gem 'jquery-rails', '2.1.4'
 gem 'jquery-migrate-rails', '1.0.0'

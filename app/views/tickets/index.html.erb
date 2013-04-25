@@ -1,12 +1,18 @@
 <%= render "layouts/authenticated" %>
-<div id="heder-bar">
-<%= link_to 'Crear Ticket', url_for(:action => 'new', :controller => 'tickets') , :class => "btn btn-primary btn-large pull-right" %>
+<div class="pageheader">
+            
+            <div class="pageicon"><span class="iconfa-exclamation-sign"></span></div>
+            <div class="pagetitle">
+                <%= link_to 'Crear Ticket', url_for(:action => 'new', :controller => 'tickets') , :class => "btn btn-primary btn-large pull-right" %>
 <h2>Tickets</H2>
-</div>
+            </div>
+        </div><!--pageheader-->
 
 
     
-      <!--Body cosdfsdfsdfntent-->
+    <div class="maincontent">
+            <div class="maincontentinner">
+                <div class="row-fluid">
     <table class="table table-striped table-bordered table-condensed table-hover">
 <thead>
   <tr>

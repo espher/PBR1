@@ -1,5 +1,16 @@
 <%= render "layouts/authenticated" %>
- <legend> Creacion de Programas Presupuestarios</legend>
+<div class="pageheader">
+            
+            <div class="pageicon"><span class="iconfa-laptop"></span></div>
+            <div class="pagetitle">
+                <h5>Aqui podra crear programas presupuestarios</h5>
+                <h1>CREACION DE PROGRAMAS</h1>
+            </div>
+        </div><!--pageheader-->
+
+<div class="maincontent">
+            <div class="maincontentinner">
+                <div class="row-fluid">
 <div class="span4 offset1">
 
 <%= simple_form_for @problem, :html => { :class => "form-horizontal" }  do |f| %>

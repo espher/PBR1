@@ -1,11 +1,113 @@
-<header class="navbar navbar-inverse navbar-fixed-top">
-      <nav class="navbar-inner">
-        <div class="container">
-
-          <%= render 'layouts/navigation' %>
-
-          <div class="row">
-          </div>
+<div class="topbar">
+    <a class="barmenu"></a>
+</div>
+<div class="mainwrapper">
+    <div class="header">
+        <div class="logo">
+            <h4>PLATAFORMA PBR MML</h4>
         </div>
-      </nav>
-    </header>
+        <div class="headerinner">
+            <ul class="headmenu">
+                <li class="odd">
+                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <%= link_to('<i class="iconfa-envelope-alt icon-2x"></i> Mensajes'.html_safe, edit_user_registration_path) %>
+                    </a>
+                </li>
+                <li class="odd">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
+                    
+                   <%= link_to('<i class="iconfa-folder-open icon-2x"></i> Documentos'.html_safe, ) %>
+                    </a>
+                </li>
+                <li class="odd">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
+                    <%= link_to('<i class="iconfa-wrench icon-2x"></i> Soporte'.html_safe, tickets_path) %>
+                    </a>
+                </li>
+                <li class="right">
+                    <div class="userloggedinfo">
+                        <%= image_tag("/images/Icon-user.png")%>
+                        <div class="userinfo">
+                            <h5><small></small></h5>
+                            <ul>
+                                <li><%= link_to('<i class="icon-cog"></i> Herramientas'.html_safe, edit_user_registration_path) %></li>
+                                <li> <%= link_to('<i class="icon-off"></i> Salir'.html_safe, destroy_user_session_path, :method=>'delete') %>
+                            
+                            </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul><!--headmenu-->
+        </div>
+    </div>
+
+
+<div class="leftpanel" style="margin-left: 0px;">
+        
+        <div class="leftmenu">        
+            <ul class="nav nav-tabs nav-stacked">
+                <li class="nav-header">Navegacion</li>
+                <li><%= link_to('<i class="icon-home icon-white"></i> Inicio'.html_safe, root_url ) %></li>
+                 <li><%= link_to('<i class="icon-folder-close icon-white"></i> Programas'.html_safe, problems_path ) %></li>
+                 <li><%= link_to('<i class="icon-signal"></i> Indicadores'.html_safe, edit_user_registration_path) %></li>
+                 <li><%= link_to('<i class="icon-calendar"></i> Calendario'.html_safe, edit_user_registration_path) %></li>
+                 <li><%= link_to('<i class="icon-key"></i> Referencias'.html_safe, edit_user_registration_path) %></li>
+                 <li><%= link_to('<i class="icon-tasks"></i> Reportes'.html_safe, edit_user_registration_path) %></li>
+                 <li><%= link_to('<i class="icon-group"></i> Ayuda en Linea'.html_safe, edit_user_registration_path) %></li>
+            </ul>
+        </div><!--leftmenu-->
+        
+    </div><!-- leftpanel -->
+
+
+
+
+
+
+ <div class="rightpanel" style="margin-left: 260px;">
+        
+        <ul class="breadcrumbs">
+            <li><a href="dashboard.html"><i class="iconfa-home"></i></a> <span class="separator"></span></li>
+            <li>Inicio</li>
+            
+            
+        </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
