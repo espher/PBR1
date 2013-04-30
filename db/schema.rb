@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130422192014) do
+ActiveRecord::Schema.define(:version => 20130430220635) do
 
   create_table "dependencies", :force => true do |t|
     t.string   "department"
@@ -26,11 +26,22 @@ ActiveRecord::Schema.define(:version => 20130422192014) do
     t.integer  "problem_id"
   end
 
+  create_table "indicators", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "problem_id"
+  end
+
+  add_index "indicators", ["user_id"], :name => "index_indicators_on_user_id"
+
   create_table "leveleightcauses", :force => true do |t|
     t.string   "content"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.integer  "levelsevencause_id"
+    t.integer  "problem_id"
   end
 
   create_table "leveleighteffects", :force => true do |t|
@@ -38,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20130422192014) do
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.integer  "levelseveneffect_id"
+    t.integer  "problem_id"
   end
 
   create_table "leveleightends", :force => true do |t|
@@ -59,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20130422192014) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.integer  "levelfourcause_id"
+    t.integer  "problem_id"
   end
 
   create_table "levelfiveeffects", :force => true do |t|
@@ -66,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20130422192014) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.integer  "levelfoureffect_id"
+    t.integer  "problem_id"
   end
 
   create_table "levelfiveends", :force => true do |t|
@@ -87,6 +101,7 @@ ActiveRecord::Schema.define(:version => 20130422192014) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.integer  "levelthreecause_id"
+    t.integer  "problem_id"
   end
 
   create_table "levelfoureffects", :force => true do |t|
@@ -94,6 +109,7 @@ ActiveRecord::Schema.define(:version => 20130422192014) do
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.integer  "levelthreeeffect_id"
+    t.integer  "problem_id"
   end
 
   create_table "levelfourends", :force => true do |t|
@@ -143,6 +159,7 @@ ActiveRecord::Schema.define(:version => 20130422192014) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.integer  "levelsixcause_id"
+    t.integer  "problem_id"
   end
 
   create_table "levelseveneffects", :force => true do |t|
@@ -150,6 +167,7 @@ ActiveRecord::Schema.define(:version => 20130422192014) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.integer  "levelsixeffect_id"
+    t.integer  "problem_id"
   end
 
   create_table "levelsevenends", :force => true do |t|
@@ -171,6 +189,7 @@ ActiveRecord::Schema.define(:version => 20130422192014) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.integer  "levelfivecause_id"
+    t.integer  "problem_id"
   end
 
   create_table "levelsixeffects", :force => true do |t|
@@ -178,6 +197,7 @@ ActiveRecord::Schema.define(:version => 20130422192014) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.integer  "levelfiveeffect_id"
+    t.integer  "problem_id"
   end
 
   create_table "levelsixends", :force => true do |t|
@@ -199,6 +219,7 @@ ActiveRecord::Schema.define(:version => 20130422192014) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.integer  "leveltwocause_id"
+    t.integer  "problem_id"
   end
 
   create_table "levelthreeeffects", :force => true do |t|
@@ -206,6 +227,7 @@ ActiveRecord::Schema.define(:version => 20130422192014) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.integer  "leveltwoeffect_id"
+    t.integer  "problem_id"
   end
 
   create_table "levelthreeends", :force => true do |t|
@@ -227,6 +249,7 @@ ActiveRecord::Schema.define(:version => 20130422192014) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.integer  "levelonecause_id"
+    t.integer  "problem_id"
   end
 
   create_table "leveltwoeffects", :force => true do |t|
@@ -234,6 +257,7 @@ ActiveRecord::Schema.define(:version => 20130422192014) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.integer  "leveloneeffect_id"
+    t.integer  "problem_id"
   end
 
   create_table "leveltwoends", :force => true do |t|
@@ -263,6 +287,7 @@ ActiveRecord::Schema.define(:version => 20130422192014) do
     t.date     "end_date"
     t.string   "definition"
     t.string   "organism"
+    t.integer  "user_id"
   end
 
   create_table "prueba2s", :force => true do |t|
@@ -289,6 +314,9 @@ ActiveRecord::Schema.define(:version => 20130422192014) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "user_id"
+    t.integer  "Phone"
+    t.string   "Prioridad"
+    t.string   "Urgency"
   end
 
   create_table "users", :force => true do |t|
@@ -307,6 +335,8 @@ ActiveRecord::Schema.define(:version => 20130422192014) do
     t.boolean  "admin",                  :default => false
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "position"
+    t.integer  "phone"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

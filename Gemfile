@@ -22,7 +22,7 @@ gem 'google-code-prettify-rails'
 gem 'jquery-rails', '2.1.4'
 gem 'jquery-migrate-rails', '1.0.0'
 
-
+gem 'gon'
 gem "haml", "~> 4.0.2"
 
 

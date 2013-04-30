@@ -1,119 +1,269 @@
-
-<%= simple_nested_form_for @problem, :html => { :class => " widgetbox box-inverse form-horizontal" }  do |f| %>
-
- 
-
-
+<%= simple_nested_form_for @problem, :html => { :class => "form-horizontal" }  do |f| %>
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-pills">
     <li class="active"><a href="#definicion" data-toggle="tab">Definicion del Problema</a></li>
     <li><a href="#arbolproblema" data-toggle="tab">Arbol del Problema</a></li>
-     <li><a href="#arbolproblema" data-toggle="tab">Arbol de Objetivos</a></li>
-     <li><a href="#arbolproblema" data-toggle="tab">Matriz Marco Logico</a></li>
+    <li><a href="#arbolproblema" data-toggle="tab">Arbol de Objetivos</a></li>
+    <li><a href="#arbolproblema" data-toggle="tab">Matriz Marco Logico</a></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane fade in active" id="definicion">
       
-<ul class="nav nav-tabs">
-    <li><a href="#infbasica" data-toggle="tab">Informacion Basica</a></li>
-    <li><a href="#nombrar" data-toggle="tab">Definicion del Problema</a></li>
-    <li><a href="#lluvia" data-toggle="tab">Lluvia de Ideas</a></li>
-  </ul>
+      <ul class="nav nav-tabs">
+          <li><a href="#infbasica" data-toggle="tab">Informacion Basica</a></li>
+          <li><a href="#nombrar" data-toggle="tab">Definicion del Problema</a></li>
+          <li><a href="#lluvia" data-toggle="tab">Lluvia de Ideas</a></li>
+      </ul>
+      <div class="tab-content">
+      <div class="tab-pane fade" id="infbasica">
+        <div class="span4 offset1"> 
+          <%= f.input :name, label: 'Nombre del Programa' %>
+          <%= f.input :organism, label: 'Dependencia', collection: ["Dependencia 1", "Dependencia 2", "Dependencia 3"] %>
+          <%= f.input :responsable_unit, label: 'Nombre del Responsable del Programa' %>
+          <%= f.input :city, label: 'Ciudad', collection: [ "Chihuahua", "DF", "Toluca", "Juarez"] %>
+          <%= f.input :department, label: 'Departamento', :collection => [ "Direccion Tecnica", "Proyectos Especiales", "Sub Direccion de Estudios"] %>
+          <%= f.input :email, label: 'Correo Electronico', placeholder: 'usuario@correo.com' %>
+        </div>
+        <div class="span4 offset1">
+          <%= f.input :init_date, label: 'Fecha problable de Inicio'%>
+          <%= f.input :end_date, label: 'Fecha problable de Terminacion' %>
+        </div>
+      </div>
 
+      <div class="tab-pane fade" id="nombrar">
+        <div class="span6 offset1">
+          <%= f.input :definition, label: 'Definicion del Problema', as: :text %>
+        </div>
+      </div>
 
-<div class="tab-content">
-    <div class="tab-pane fade" id="infbasica">
-       <div class="span4 offset1"> 
-	<%= f.input :name, label: 'Nombre del Programa' %>
-	<%= f.input :organism, label: 'Dependencia', collection: ["Dependencia 1", "Dependencia 2", "Dependencia 3"] %>
-	<%= f.input :responsable_unit, label: 'Nombre del Responsable del Programa' %>
-	<%= f.input :city, label: 'Ciudad', collection: [ "Chihuahua", "DF", "Toluca", "Juarez"] %>
-	<%= f.input :department, label: 'Departamento', :collection => [ "Direccion Tecnica", "Proyectos Especiales", "Sub Direccion de Estudios"] %>
-	<%= f.input :email, label: 'Correo Electronico', placeholder: 'usuario@correo.com' %>
-</div>
-		<div class="span4 offset1">
-	<%= f.input :init_date, label: 'Fecha problable de Inicio'%>
-	<%= f.input :end_date, label: 'Fecha problable de Terminacion' %>
-</div>
+      <div class="tab-pane fade" id="lluvia">
+        <div class="span6 offset1">
+          <%= f.simple_fields_for :idea do  |i| %>
+            <%= i.input :content,  label: 'Idea', as: :text, required: false %>
+            <%= i.link_to_remove "Quitar", :class => 'btn btn-danger' %>
+          <% end %>
+          <%= f.link_to_add "Agregar Idea", :idea %>
+        </div>
+      </div>
+      </div>
     </div>
+  <div class="tab-pane fade" id="arbolproblema">
+    <ul class="nav nav-tabs">
+      <li><a href="#causas" data-toggle="tab">Causas</a></li>
+      <li><a href="#efectos" data-toggle="tab">Efectos</a></li>
+      <li><a href="#diagcauef" data-toggle="tab" id="genera_diagrama">Generar Diagrama</a></li>
+    </ul>
 
-    <div class="tab-pane fade" id="nombrar">
-     <div class="span6 offset1">
-<%= f.input :definition, label: 'Definicion del Problema', as: :text %>
-</div>
+    <div class="tab-content">
+      <div class="tab-pane" id="causas">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <ul id="list_nivel_causa" class="nav">
+              <li id="select_nivel_causa_1"  class="nivel_causa_nav"><a href="#">Nivel 1</a></li>
+              <li id="select_nivel_causa_2" class="oculto nivel_causa_nav"><a href="#">Nivel 2</a></li>
+              <li id="select_nivel_causa_3" class="oculto nivel_causa_nav"><a href="#">Nivel 3</a></li>
+              <li id="select_nivel_causa_4" class="oculto nivel_causa_nav"><a href="#">Nivel 4</a></li>
+              <li id="select_nivel_causa_5" class="oculto nivel_causa_nav"><a href="#">Nivel 5</a></li>
+              <li id="select_nivel_causa_6" class="oculto nivel_causa_nav"><a href="#">Nivel 6</a></li>
+              <li id="select_nivel_causa_7" class="oculto nivel_causa_nav"><a href="#">Nivel 7</a></li>
+              <li id="select_nivel_causa_8" class="oculto nivel_causa_nav"><a href="#">Nivel 8</a></li>
+            </ul>
+            <button id="btn_add_nivel_causa" class="btn btn-small" type="button">Agregar Nivel</button>
+          </div>
+        </div>
+        <div class="span6 offset1">   
 
+          <div id="nivel_causa_1" class="nivele_causa_bloque">   
+            <%= f.simple_fields_for :levelonecause do  |levelone| %> 
+              <%= levelone.input :content,  label: 'Causa', as: :text, required: false %>
+              <%= levelone.link_to_remove "Quitar", :class => 'btn btn-danger' %> 
+            <% end %>
+            <%= f.link_to_add "Agregar Causa del nivel 1", :levelonecause %>
+          </div>
+
+          <div id="nivel_causa_2" class="nivele_causa_bloque oculto">   
+            <%= f.simple_fields_for :leveltwocause do  |leveltwo| %> 
+              <%= leveltwo.input :content,  label: 'Causa', as: :text, required: false %>
+              <%= leveltwo.link_to_remove "Quitar", :class => 'btn btn-danger' %> 
+              <%= leveltwo.label :levelonecause_id, "Efecto" %>
+              <%= leveltwo.collection_select(:levelonecause_id, @problem.levelonecause, :id, :content) %>
+            <% end %>
+            <%= f.link_to_add "Agregar Causa del nivel 2", :leveltwocause %>
+          </div>
+
+          <div id="nivel_causa_3" class="nivele_causa_bloque oculto">   
+            <%= f.simple_fields_for :levelthreecause do  |levelthree| %> 
+              <%= levelthree.input :content,  label: 'Causa', as: :text, required: false %>
+              <%= levelthree.link_to_remove "Quitar", :class => 'btn btn-danger' %> 
+              <%= levelthree.label :leveltwocause_id, "Efecto" %>
+              <%= levelthree.collection_select(:leveltwocause_id, @problem.leveltwocause, :id, :content) %>
+            <% end %>
+            <%= f.link_to_add "Agregar Causa del nivel 3", :levelthreecause %>
+          </div>
+
+          <div id="nivel_causa_4" class="nivele_causa_bloque oculto">   
+            <%= f.simple_fields_for :levelfourcause do  |levelfour| %> 
+              <%= levelfour.input :content,  label: 'Causa', as: :text, required: false %>
+              <%= levelfour.link_to_remove "Quitar", :class => 'btn btn-danger' %>
+
+              <%= levelfour.label :levelthreecause_id, "Efecto" %>
+              <%= levelfour.collection_select(:levelthreecause_id, @problem.levelthreecause, :id, :content) %> 
+            <% end %>
+            <%= f.link_to_add "Agregar Causa del nivel 4", :levelfourcause %>
+          </div>
+
+          <div id="nivel_causa_5" class="nivele_causa_bloque oculto">   
+            <%= f.simple_fields_for :levelfivecause do  |levelfive| %> 
+              <%= levelfive.input :content,  label: 'Causa', as: :text, required: false %>
+              <%= levelfive.link_to_remove "Quitar", :class => 'btn btn-danger' %> 
+
+              <%= levelfive.label :levelfourcause_id, "Efecto" %>
+              <%= levelfive.collection_select(:levelfourcause_id, @problem.levelfourcause, :id, :content) %> 
+            <% end %>
+            <%= f.link_to_add "Agregar Causa del nivel 5", :levelfivecause %>
+          </div>
+
+          <div id="nivel_causa_6" class="nivele_causa_bloque oculto">   
+            <%= f.simple_fields_for :levelsixcause do  |levelsix| %> 
+              <%= levelsix.input :content,  label: 'Causa', as: :text, required: false %>
+              <%= levelsix.link_to_remove "Quitar", :class => 'btn btn-danger' %>
+
+              <%= levelsix.label :levelfivecause_id, "Efecto" %>
+              <%= levelsix.collection_select(:levelfivecause_id, @problem.levelfivecause, :id, :content) %>  
+            <% end %>
+            <%= f.link_to_add "Agregar Causa del nivel 6", :levelsixcause %>
+          </div>
+
+          <div id="nivel_causa_7" class="nivele_causa_bloque oculto">   
+            <%= f.simple_fields_for :levelsevencause do  |levelseven| %> 
+              <%= levelseven.input :content,  label: 'Causa', as: :text, required: false %>
+              <%= levelseven.link_to_remove "Quitar", :class => 'btn btn-danger' %>
+              <%= levelseven.label :levelsixcause_id, "Efecto" %>
+              <%= levelseven.collection_select(:levelsixcause_id, @problem.levelsixcause, :id, :content) %> 
+            <% end %>
+            <%= f.link_to_add "Agregar Causa del nivel 7", :levelsevencause %>
+          </div>
+
+          <div id="nivel_causa_8" class="nivele_causa_bloque oculto">   
+            <%= f.simple_fields_for :leveleightcause do  |leveleight| %> 
+              <%= leveleight.input :content,  label: 'Causa', as: :text, required: false %>
+              <%= leveleight.link_to_remove "Quitar", :class => 'btn btn-danger' %>
+              <%= leveleight.label :levelsevencause_id, "Efecto" %>
+              <%= leveleight.collection_select(:levelsevencause_id, @problem.levelsevencause, :id, :content) %> 
+            <% end %>
+            <%= f.link_to_add "Agregar Causa del nivel 8", :leveleightcause %>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="tab-pane" id="efectos">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <ul id="list_nivel_efecto" class="nav">
+              <li id="select_nivel_efecto_1"  class="nivel_efecto_nav"><a href="#">Nivel 1</a></li>
+              <li id="select_nivel_efecto_2" class="oculto nivel_efecto_nav"><a href="#">Nivel 2</a></li>
+              <li id="select_nivel_efecto_3" class="oculto nivel_efecto_nav"><a href="#">Nivel 3</a></li>
+              <li id="select_nivel_efecto_4" class="oculto nivel_efecto_nav"><a href="#">Nivel 4</a></li>
+              <li id="select_nivel_efecto_5" class="oculto nivel_efecto_nav"><a href="#">Nivel 5</a></li>
+              <li id="select_nivel_efecto_6" class="oculto nivel_efecto_nav"><a href="#">Nivel 6</a></li>
+              <li id="select_nivel_efecto_7" class="oculto nivel_efecto_nav"><a href="#">Nivel 7</a></li>
+              <li id="select_nivel_efecto_8" class="oculto nivel_efecto_nav"><a href="#">Nivel 8</a></li>
+            </ul>
+            <button id="btn_add_nivel_efecto" class="btn btn-small" type="button">Agregar Nivel</button>
+          </div>
+        </div>
+
+        <div class="span6 offset1">       
+
+          <div id="nivel_efecto_1" class="nivele_efecto_bloque">   
+            <%= f.simple_fields_for :leveloneeffect do  |levelonefx| %>
+              <%= levelonefx.input :content,  label: 'Efect', as: :text, required: false %>
+              <%= levelonefx.link_to_remove "Quitar", :class => 'btn btn-danger' %>
+            <% end %>
+            <%= f.link_to_add "Agregar Efecto del nivel 1", :leveloneeffect %>
+          </div>
+
+          <div id="nivel_efecto_2" class="nivele_efecto_bloque oculto">   
+            <%= f.simple_fields_for :leveltwoeffect do  |leveltwofx| %>
+              <%= leveltwofx.input :content,  label: 'Efect', as: :text, required: false %>
+              <%= leveltwofx.link_to_remove "Quitar", :class => 'btn btn-danger' %>
+              <%= leveltwofx.label :leveloneeffect_id, "Efecto" %>
+              <%= leveltwofx.collection_select(:leveloneeffect_id, @problem.leveloneeffect, :id, :content) %>
+            <% end %>
+            <%= f.link_to_add "Agregar Efecto del nivel 2", :leveltwoeffect %>
+          </div>
+
+          <div id="nivel_efecto_3" class="nivele_efecto_bloque oculto">   
+            <%= f.simple_fields_for :levelthreeeffect do  |levelthreefx| %>
+              <%= levelthreefx.input :content,  label: 'Efect', as: :text, required: false %>
+              <%= levelthreefx.link_to_remove "Quitar", :class => 'btn btn-danger' %>
+              <%= levelthreefx.label :leveltwoeffect_id, "Efecto" %>
+              <%= levelthreefx.collection_select(:leveltwoeffect_id, @problem.leveltwoeffect, :id, :content) %>
+            <% end %>
+            <%= f.link_to_add "Agregar Efecto del nivel 3", :levelthreeeffect %>
+          </div>
+
+          <div id="nivel_efecto_4" class="nivele_efecto_bloque oculto">   
+            <%= f.simple_fields_for :levelfoureffect do  |levelfourfx| %>
+              <%= levelfourfx.input :content,  label: 'Efect', as: :text, required: false %>
+              <%= levelfourfx.link_to_remove "Quitar", :class => 'btn btn-danger' %>
+              <%= levelfourfx.label :levelthreeeffect_id, "Efecto" %>
+              <%= levelfourfx.collection_select(:levelthreeeffect_id, @problem.levelthreeeffect, :id, :content) %>
+            <% end %>
+            <%= f.link_to_add "Agregar Efecto del nivel 4", :levelfoureffect %>
+          </div>
+
+          <div id="nivel_efecto_5" class="nivele_efecto_bloque oculto">   
+            <%= f.simple_fields_for :levelfiveeffect do  |levelfivefx| %>
+              <%= levelfivefx.input :content,  label: 'Efect', as: :text, required: false %>
+              <%= levelfivefx.link_to_remove "Quitar", :class => 'btn btn-danger' %>
+              <%= levelfivefx.label :levelfoureffect_id, "Efecto" %>
+              <%= levelfivefx.collection_select(:levelfoureffect_id, @problem.levelfoureffect, :id, :content) %>
+            <% end %>
+            <%= f.link_to_add "Agregar Efecto del nivel 5", :levelfiveeffect %>
+          </div>
+
+          <div id="nivel_efecto_6" class="nivele_efecto_bloque oculto">   
+            <%= f.simple_fields_for :levelsixeffect do  |levelsixfx| %>
+              <%= levelsixfx.input :content,  label: 'Efect', as: :text, required: false %>
+              <%= levelsixfx.link_to_remove "Quitar", :class => 'btn btn-danger' %>
+              <%= levelsixfx.label :levelfiveeffect_id, "Efecto" %>
+              <%= levelsixfx.collection_select(:levelfiveeffect_id, @problem.levelfiveeffect, :id, :content) %>
+            <% end %>
+            <%= f.link_to_add "Agregar Efecto del nivel 6", :levelsixeffect %>
+          </div>
+
+          <div id="nivel_efecto_7" class="nivele_efecto_bloque oculto">   
+            <%= f.simple_fields_for :levelseveneffect do  |levelsevenfx| %>
+              <%= levelsevenfx.input :content,  label: 'Efect', as: :text, required: false %>
+              <%= levelsevenfx.link_to_remove "Quitar", :class => 'btn btn-danger' %>
+              <%= levelsevenfx.label :levelsixeffect_id, "Efecto" %>
+              <%= levelsevenfx.collection_select(:levelsixeffect_id, @problem.levelsixeffect, :id, :content) %>
+            <% end %>
+            <%= f.link_to_add "Agregar Efecto del nivel 7", :levelseveneffect %>
+          </div>
+
+          <div id="nivel_efecto_8" class="nivele_efecto_bloque oculto">   
+            <%= f.simple_fields_for :leveleighteffect do  |leveleightfx| %>
+              <%= leveleightfx.input :content,  label: 'Efect', as: :text, required: false %>
+              <%= leveleightfx.link_to_remove "Quitar", :class => 'btn btn-danger' %>
+              <%= leveleightfx.label :levelseveneffect_id, "Efecto" %>
+              <%= leveleightfx.collection_select(:levelseveneffect_id, @problem.levelseveneffect, :id, :content) %>
+            <% end %>
+            <%= f.link_to_add "Agregar Efecto del nivel 8", :leveleighteffect %>
+          </div>
+
+        </div>
+
+      </div>
+
+    <div class="tab-pane" id="diagcauef">
+      <div class="span6 offset1"> 
+        <div id="contenedor_diagrama"></div>
+      </div>
     </div>
-
-    <div class="tab-pane fade" id="lluvia">
-    
-
-
- <div class="span6 offset1">
-
-<%= f.simple_fields_for :idea do  |i| %>
-    
-    <%= i.input :content,  label: 'Idea', as: :text, required: false %>
-    <%= i.link_to_remove "Quitar", :class => 'btn btn-danger' %>
-  
-   
-<% end %>
-
- <%= f.link_to_add "Agregar Idea", :idea %>
-</div>
-
-
-    </div>
-
-
-
-  </div>
-
-
-
-
-    </div>
-    <div class="tab-pane fade" id="arbolproblema">
-     
-
-
-
-<ul class="nav nav-tabs">
-    <li><a href="#causas" data-toggle="tab">Causas</a></li>
-    <li><a href="#efectos" data-toggle="tab">Efectos</a></li>
-    <li><a href="#diagcauef" data-toggle="tab">Generar Diagrama</a></li>
-  </ul>
-
-<div class="tab-content">
-    <div class="tab-pane" id="causas">
-
-<div class="span6 offset1">      
-<%= f.simple_fields_for :levelonecause do  |levelone| %>
-    
-    <%= levelone.input :content,  label: 'Causa', as: :text, required: false %>
-    <%= levelone.link_to_remove "Quitar", :class => 'btn btn-danger' %>
-  
-   
-<% end %>
-
- <%= f.link_to_add "Agregar Causa del nivel 1", :levelonecause %>
-</div>
- </div>
-
-    <div class="tab-pane" id="efectos">
-<div class="span6 offset1">      
-<%= f.simple_fields_for :leveloneeffect do  |levelonefx| %>
-    
-    <%= levelonefx.input :content,  label: 'Efect', as: :text, required: false %>
-    <%= levelonefx.link_to_remove "Quitar", :class => 'btn btn-danger' %>
-  
-   
-<% end %>
-
- <%= f.link_to_add "Agregar Efecto del nivel 1", :leveloneeffect %>
-</div>
-
-    </div>
-
     </div>
   </div>
 </div>
@@ -121,3 +271,173 @@
  <%= f.button :submit, 'Guardar Datos', class: 'btn btn-primary pull-right' %>
 <% end %>
 </div>
+
+<script type = "text/javascript">
+      $(document).on('ready', function() {
+
+
+        $("#genera_diagrama").live('click', function() {
+          $("#contenedor_diagrama").fadeIn("slow").addClass("overlay_arbol");
+          creaArbolCausa();
+          creaArbolEfecto();
+        });
+
+        $("#btn_add_nivel_causa").on('click', addNivelCausa);
+        $(".nivel_causa_nav").on('click', desplegaNivelCausa)
+
+        $("#btn_add_nivel_efecto").on('click', addNivelEfecto);
+        $(".nivel_efecto_nav").on('click', desplegaNivelEfecto)
+      });
+
+
+      var creaArbolCausa = function() {
+        var arbol = '';
+        var classIncrement = 0;
+        for (var i = 0; i < gon.problem_causes.length; i++) {
+          var problema = gon.problem_causes[i];
+
+            if (i === 0) {
+              arbol = "<div class='window_principal window_plumb' id='problema_principal'>"+gon.problem_causes[i]['name']+"</div>";
+              $(arbol).appendTo("#contenedor_diagrama");
+            }
+            
+            if(gon.problem_causes[i]['causa_content1'] !== null){
+                arbol = "<div class='window_causa_nivel1 window_plumb' id='id_child_causa"+gon.problem_causes[i]['causa_me1']+"' style='left:"+classIncrement+"em'>"+gon.problem_causes[i]['causa_content1']+"</div>";
+                
+                $(arbol).appendTo("#contenedor_diagrama");
+                jsPlumb.connect({
+                    source:     problema_principal,
+                    target:     'id_child_causa'+gon.problem_causes[i]['causa_me1'],
+                    anchors:    [ "BottomCenter", "TopCenter" ],
+                    hoverPaintStyle: { strokeStyle: "#ec9f2e" },
+                  });
+
+                jsPlumb.draggable(jsPlumb.getSelector(".window_plumb"));
+            }
+
+            if(gon.problem_causes[i]['causa_content2'] !== null){
+                generaCuadroCausa(gon.problem_causes[i]['causa_content2'],gon.problem_causes[i]['causa_me2'], gon.problem_causes[i]['causa_from2'],classIncrement);
+            }
+
+            if(gon.problem_causes[i]['causa_content3'] !== null){
+                generaCuadroCausa(gon.problem_causes[i]['causa_content3'],gon.problem_causes[i]['causa_me3'], gon.problem_causes[i]['causa_from3'],classIncrement);
+
+            }
+
+            if(gon.problem_causes[i]['causa_content4'] !== null){
+              generaCuadroCausa(gon.problem_causes[i]['causa_content4'],gon.problem_causes[i]['causa_me4'], gon.problem_causes[i]['causa_from4'],classIncrement);
+            }
+
+            if(gon.problem_causes[i]['causa_content5'] !== null){
+              generaCuadroCausa(gon.problem_causes[i]['causa_content5'],gon.problem_causes[i]['causa_me5'], gon.problem_causes[i]['causa_from5'],classIncrement);
+            }
+
+            if(gon.problem_causes[i]['causa_content6'] !== null){
+              generaCuadroCausa(gon.problem_causes[i]['causa_content6'],gon.problem_causes[i]['causa_me6'], gon.problem_causes[i]['causa_from6'],classIncrement);
+            }
+
+            if(gon.problem_causes[i]['causa_content7'] !== null){
+              generaCuadroCausa(gon.problem_causes[i]['causa_content7'],gon.problem_causes[i]['causa_me7'], gon.problem_causes[i]['causa_from7'],classIncrement);
+            }
+
+            if(gon.problem_causes[i]['causa_content8'] !== null){
+              generaCuadroCausa(gon.problem_causes[i]['causa_content8'],gon.problem_causes[i]['causa_me8'], gon.problem_causes[i]['causa_from8'],classIncrement);
+            }
+            classIncrement =  classIncrement + 17;
+        }
+      }
+
+       var creaArbolEfecto = function() {
+        var arbol = '';
+        var classIncrement = 0;
+
+        for (var i = 0; i < gon.problem_effects.length; i++) {
+          var problema = gon.problem_effects[i];
+            
+            if(gon.problem_effects[i]['efecto_content1'] !== null){
+                arbol = "<div class='window_efecto_nivel1 window_plumb' id='id_child_efecto"+gon.problem_effects[i]['efecto_me1']+"' style='left:"+classIncrement+"em'>"+gon.problem_effects[i]['efecto_content1']+"</div>";
+                
+                $(arbol).appendTo("#contenedor_diagrama");
+                  jsPlumb.connect({
+                    source: problema_principal,
+                    target: 'id_child_efecto'+gon.problem_effects[i]['efecto_me1'],
+                    anchors:    [ "TopCenter", "BottomCenter" ],
+                    hoverPaintStyle: { strokeStyle: "#ec9f2e" },
+                  });
+
+                jsPlumb.draggable(jsPlumb.getSelector(".window_plumb"));
+            }
+
+            classIncrement =  classIncrement + 17;
+        }
+      }
+
+
+
+
+      var generaCuadroCausa = function(contenido,idCausa,idPadre,classIncrement){
+        if(gon.problem_causes[i]['causa_content1'] !== null){
+                arbol = "<div class='window_causa_nivel1 window_plumb' id='id_child_causa"+idCausa+"' style='left:"+classIncrement+"em'>"+contenido+"</div>";
+                $(arbol).appendTo("#contenedor_diagrama");
+                jsPlumb.connect({
+                    source: idPadre,
+                    target: 'id_child_causa'+idCausa,
+                  });
+                jsPlumb.draggable(jsPlumb.getSelector(".window_plumb"));
+            }
+      }
+
+      var generaCuadroEfecto = function(contenido,idEfecto,idPadre,classIncrement){
+        if(gon.problem_causes[i]['efecto_content1'] !== null){
+                arbol = "<div class='window_efecto_nivel1 window_plumb' id='id_child_efecto"+idEfecto+"' style='left:"+classIncrement+"em'>"+contenido+"</div>";
+                $(arbol).appendTo("#contenedor_diagrama");
+
+                jsPlumb.connect({
+                    source: idPadre,
+                    target: 'id_child_efecto'+idEfecto,
+                  });
+                jsPlumb.draggable(jsPlumb.getSelector(".window_plumb"));
+
+            }
+      }
+
+      var addNivelCausaClicked = 1;
+      var addNivelCausa = function() {
+        addNivelCausaClicked++;
+        $("#list_nivel_causa li:nth-child(" + addNivelCausaClicked + ")").removeClass("oculto");
+        if (addNivelCausaClicked === 8) {
+          $("#btn_add_nivel_causa").fadeOut(function() {
+            $(this).remove();
+          });
+        }
+      }
+
+      var desplegaNivelCausa = function() {
+        var currentSelectNivel = this.id.split('_');
+        currentSelectNivel[3];
+        $(".nivele_causa_bloque").slideUp("slow");
+        $("#nivel_causa_" + currentSelectNivel[3]).slideDown("slow");
+        $(".nivele_causa_bloque").addClass("oculto");
+        $("#nivel_causa_" + currentSelectNivel[3]).removeClass("oculto");
+      }
+
+      var addNivelEfectoClicked = 1;
+      var addNivelEfecto = function() {
+        addNivelEfectoClicked++;
+        $("#list_nivel_efecto li:nth-child(" + addNivelEfectoClicked + ")").removeClass("oculto");
+        if (addNivelEfectoClicked === 8) {
+          $("#btn_add_nivel_efecto").fadeOut(function() {
+            $(this).remove();
+          });
+        }
+      }
+
+      var desplegaNivelEfecto = function() {
+        var currentSelectNivel = this.id.split('_');
+        currentSelectNivel[3];
+        $(".nivele_efecto_bloque").slideUp("slow");
+        $("#nivel_efecto_" + currentSelectNivel[3]).slideDown("slow");
+        $(".nivele_efecto_bloque").addClass("oculto");
+        $("#nivel_efecto_" + currentSelectNivel[3]).removeClass("oculto");
+      }
+</script>

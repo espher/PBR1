@@ -1,24 +1,24 @@
 class Problem < ActiveRecord::Base
-  attr_accessible :leveloneeffect_attributes, :levelonecause_attributes, :budget_program, :city, :department, :email, :name, :responsable_unit, :init_date, :end_date, :organism, :definition, :idea_attributes
+  attr_accessible :leveleighteffect_attributes, :leveleightcause_attributes,:levelseveneffect_attributes, :levelsevencause_attributes,:levelsixeffect_attributes, :levelsixcause_attributes,:levelfiveeffect_attributes, :levelfivecause_attributes,:levelfoureffect_attributes, :levelfourcause_attributes,:levelthreeeffect_attributes, :levelthreecause_attributes,:leveltwoeffect_attributes, :leveltwocause_attributes,:leveloneeffect_attributes, :levelonecause_attributes, :budget_program, :city, :department, :email, :name, :responsable_unit, :init_date, :end_date, :organism, :definition, :idea_attributes
 
   has_many :idea
   has_many :levelonecause
-  has_many :leveltwocause, :through => :levelonecause
-  has_many :levelthreecause, :through => :leveltwocause
-  has_many :levelfourcause, :through => :levelthreecause
-  has_many :levelfivecause, :through => :levelfourcause
-  has_many :levelsixcause, :through => :levelfivecause
-  has_many :levelsevencause, :through => :levelsixcause
-  has_many :leveleightcause, :through => :levelsevencause
+  has_many :leveltwocause#, :through => :levelonecause
+  has_many :levelthreecause#, :through => :leveltwocause
+  has_many :levelfourcause#, :through => :levelthreecause
+  has_many :levelfivecause#, :through => :levelfourcause
+  has_many :levelsixcause#, :through => :levelfivecause
+  has_many :levelsevencause#, :through => :levelsixcause
+  has_many :leveleightcause#, :through => :levelsevencause
 
   has_many :leveloneeffect
-  has_many :leveltwoeffect, :through => :leveloneeffect
-  has_many :levelthreeeffect, :through => :leveltwoeffect
-  has_many :levelfoureffect, :through => :levelthreeeffect
-  has_many :levelfiveeffect, :through => :levelfoureffect
-  has_many :levelsixeffect, :through => :levelfiveeffect
-  has_many :levelseveneffect, :through => :levelsixeffect
-  has_many :leveleighteffect, :through => :levelseveneffect
+  has_many :leveltwoeffect#, :through => :leveloneeffect
+  has_many :levelthreeeffect#, :through => :leveltwoeffect
+  has_many :levelfoureffect#, :through => :levelthreeeffect
+  has_many :levelfiveeffect#, :through => :levelfoureffect
+  has_many :levelsixeffect#, :through => :levelfiveeffect
+  has_many :levelseveneffect#, :through => :levelsixeffect
+  has_many :leveleighteffect#, :through => :levelseveneffect
 
   accepts_nested_attributes_for :idea, :allow_destroy => true
   accepts_nested_attributes_for :levelonecause, :allow_destroy => true
